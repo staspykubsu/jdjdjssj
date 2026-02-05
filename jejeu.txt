@@ -1,0 +1,24 @@
+import re
+
+text = self.original_text
+
+# Привести к нижнему регистру если есть буквы
+if re.search(r'[A-Za-z]', text):
+    text = text.lower()
+
+# Нормализовать пробелы и знаки препинания
+text = re.sub(r'\s+', ' ', text)
+text = re.sub(r'\s*([.,!?])\s*', r'\1 ', text)
+
+# Разделить на предложения и обработать
+sentences = re.split(r'([.!?] )', text)
+result = []
+
+for i in range(0, len(sentences), 2):
+    if i < len(sentences):
+        sentence = sentences[i].strip()
+        if sentence:
+            # Капитализировать первое слово каждого предложения
+            words = sentence.split()
+            if words:
+                words[0] = words[0
